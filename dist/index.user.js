@@ -45,36 +45,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   };
   var copyPageLinkIntoClipboard = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-      var button, location, pathname, linkName, clipboardItem;
+      var button, _window$location, pathname, href, linkName, clipboardItem;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
             button = e.currentTarget;
-            location = window.location;
-            pathname = location.pathname;
+            _window$location = window.location, pathname = _window$location.pathname, href = _window$location.href;
             linkName = pathname.split("/").at(-1);
-            console.clear();
-            console.log({
-              pathname: pathname,
-              linkName: linkName,
-              location: location
-            });
             clipboardItem = new ClipboardItem({
               "text/plain": new Blob(["".concat(linkName)], {
                 type: "text/plain"
               }),
-              "text/html": new Blob(["<a href=\"".concat(location, "\">").concat(linkName, "</a>")], {
+              "text/html": new Blob(["<a href=\"".concat(href, "\">").concat(linkName, "</a>")], {
                 type: "text/html"
               })
             });
-            _context2.next = 9;
+            _context2.next = 6;
             return navigator.clipboard.write([clipboardItem]);
-          case 9:
+          case 6:
             toggleIconsVisibility(button);
             setTimeout(function () {
               toggleIconsVisibility(button);
             }, 3000);
-          case 11:
+          case 8:
           case "end":
             return _context2.stop();
         }

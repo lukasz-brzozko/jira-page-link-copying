@@ -16,15 +16,12 @@
 
   const copyPageLinkIntoClipboard = async (e) => {
     const { currentTarget: button } = e;
-    const location = window.location;
-    const { pathname } = location;
+    const { pathname, href } = window.location;
     const linkName = pathname.split("/").at(-1);
-    console.clear();
-    console.log({ pathname, linkName, location });
 
     const clipboardItem = new ClipboardItem({
       "text/plain": new Blob([`${linkName}`], { type: "text/plain" }),
-      "text/html": new Blob([`<a href="${location}">${linkName}</a>`], {
+      "text/html": new Blob([`<a href="${href}">${linkName}</a>`], {
         type: "text/html",
       }),
     });
